@@ -22,3 +22,13 @@ $ curl "http://localhost:3000/hello" # doit répondre “Quel est votre nom ?”
 $ curl -X POST --header "Content-Type: application/json" --data "{\"msg\":\"ville\"}" "http://localhost:3000/chat" # doit répondre “Nous sommes à Paris”
 $ curl -X POST --header "Content-Type: application/json" --data "{\"msg\":\"météo\"}" "http://localhost:3000/chat" # doit répondre “Il fait beau”
 ```
+
+## Deploiement en production
+
+```
+heroku login
+heroku git:clone -a chatbot-3moc
+git add .
+git commit -am "deploiement"
+git push heroku master
+```
