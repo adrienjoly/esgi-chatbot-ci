@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node server.js"
   },
   "author": "",
@@ -13,5 +13,8 @@
     "cours-nodejs": "github:adrienjoly/cours-nodejs",
     "express": "^4.17.1",
     "mongodb": "^3.6.5"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.2"
   }
 }
