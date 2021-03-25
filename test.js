@@ -1,5 +1,16 @@
 const { somme } = require("./somme.js");
 const assert = require("assert");
+const fetch = require("node-fetch");
+
+describe("le chat-bot devrait", () => {
+  it("dire bonjour quand il reçoit une requête HTTP GET à la racine", async () => {
+    // 1. envoyer une requête GET et récupérer la réponse
+    const response = await fetch("http://localhost:3000/");
+    const text = await response.text();
+    // 2. vérifier la réponse
+    assert.equal(text, "Bonjour !");
+  });
+});
 
 describe("la fonctionne somme() devrait", () => {
 
