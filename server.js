@@ -3,7 +3,7 @@ const express = require('express');
 const PORT = process.env.PORT || 3000;
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://adrien:adrien@cluster0.2vz2z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 (async () => {
