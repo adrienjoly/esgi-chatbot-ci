@@ -28,6 +28,11 @@ const client = new MongoClient(uri, {
     res.send("Bonjour !");
   });
 
+  // définir le point d'entrée `GET /` qui répond "Bonjour !" à chaque requête reçue
+  app.get("/coucou", (req, res) => {
+    res.send("Bonjour !");
+  });
+
   // ajouter le point d'entrée `GET /hello?nom=XXX` comme spécifié dans l'énoncé
   app.get("/hello", (req, res) => {
     if (req.query.nom) {
