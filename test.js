@@ -13,7 +13,6 @@ describe("le chat-bot devrait", () => {
 });
 
 describe("la fonctionne somme() devrait", () => {
-
   it(`Avec les valeurs de paramètres 5 et 4, la fonction somme() est sensée retrourner la valeur 9`, () => {
     const résultat = somme(5, 4);
     assert.equal(résultat, 9);
@@ -36,12 +35,13 @@ describe("la fonctionne somme() devrait", () => {
 
   it(`Avec les valeurs de paramètres 3 et "toto", la fonction somme() est sensée retourner un erreur "paramètre invalide"`, () => {
     const expectedError = "paramètre invalide";
-    assert.throws(() => { somme(1, "toto"); }, new Error(expectedError));
+    assert.throws(() => {
+      somme(1, "toto");
+    }, new Error(expectedError));
   });
 
   it(`Avec aucun paramètres, la fonction somme() est sensée retrourner la valeur 0`, () => {
     const résultat = somme();
     assert.equal(résultat, 0);
   });
-
 });

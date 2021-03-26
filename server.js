@@ -1,10 +1,13 @@
-const express = require('express');
+const express = require("express");
 
 const PORT = process.env.PORT || 3000;
 
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 (async () => {
   await client.connect();
@@ -15,27 +18,26 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
   app.use(express.json());
 
   // définir le point d'entrée `GET /` qui répond "Bonjour !" à chaque requête reçue
-  app.get('/', (req, res) => {
-    res.send('Bonjour !');
+  app.get("/", (req, res) => {
+    res.send("Bonjour !");
   });
 
   // ajouter le point d'entrée `GET /hello?nom=XXX` comme spécifié dans l'énoncé
-  app.get('/hello', (req, res) => {
+  app.get("/hello", (req, res) => {
     if (req.query.nom) {
-      res.send('Bonjour, ' + req.query.nom + ' !');
+      res.send("Bonjour, " + req.query.nom + " !");
     } else {
-      res.send('Quel est votre nom ?');
+      res.send("Quel est votre nom ?");
     }
   });
 
-  app.get('/messages/all', async (req, res) => {
+  app.get("/messages/all", async (req, res) => {
     const docs = await collection.find({}).toArray();
     res.send(docs);
   });
 
   // ajouter le point d'entrée `POST /chat` comme spécifié dans l'énoncé
-  app.post('/chat', async (req, res) => {
-
+  app.post("/chat", async (req, res) => {
     let réponse;
     if (req.body.msg === "ville") {
       réponse = "Nous sommes à Paris";
@@ -53,14 +55,14 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
       {
         from: "bot",
         msg: réponse,
-      }
+      },
     ]);
     res.send(réponse);
   });
 
-  app.delete('/messages/last', async (req, res) => {
+  app.delete("/messages/last", async (req, res) => {
     try {
-      const docs = await collection.find().sort( { _id : -1 } ).limit(2).toArray();
+      const docs = await collection.find().sort({ _id: -1 }).limit(2).toArray();
       const idRéponse = docs[0]._id;
       const idQuestion = docs[1]._id;
       await collection.deleteOne({ _id: idRéponse });
@@ -75,5 +77,4 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
   app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
   });
-
 })();
