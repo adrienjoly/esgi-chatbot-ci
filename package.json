@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "check": "npx eslint *.js && npx prettier --check *.js && $(npm bin)/tsc",
     "test": "mocha",
     "start": "node server.js"
   },
