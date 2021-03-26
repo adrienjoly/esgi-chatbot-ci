@@ -4,6 +4,12 @@ const PORT = process.env.PORT || 3000;
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGODB_URI;
+
+if (uri === undefined) {
+  console.error("please provide MONGODB_URI");
+  process.exit(1);
+}
+
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

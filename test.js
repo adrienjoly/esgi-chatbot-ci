@@ -36,6 +36,7 @@ describe("la fonctionne somme() devrait", () => {
   it(`Avec les valeurs de paramètres 3 et "toto", la fonction somme() est sensée retourner un erreur "paramètre invalide"`, () => {
     const expectedError = "paramètre invalide";
     assert.throws(() => {
+      // @ts-ignore
       somme(1, "toto");
     }, new Error(expectedError));
   });
