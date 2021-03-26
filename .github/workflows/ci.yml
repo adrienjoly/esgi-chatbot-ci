@@ -28,6 +28,6 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: |
-      MONGODB_URI="mongodb+srv://adrien:adrien@cluster0.2vz2z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" npm start &
-      npx wait-on http://localhost:3000
-      npm test
+        MONGODB_URI="mongodb+srv://adrien:adrien@cluster0.2vz2z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" npm start &
+        npx wait-on http://localhost:3000
+        npm test
